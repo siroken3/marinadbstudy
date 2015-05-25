@@ -7,19 +7,19 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
 
   config.vm.define "db1" do |server|
-    server.vm.network "private_network", ip: "10.0.1.2"
+    server.vm.network "private_network", ip: "192.168.33.10"
     config.vm.hostname = "db1"
-    config.vm.provision "shell", path: "install_mysql.sh"
+    config.vm.provision "shell", path: "install_mysql.sh", args: 1
   end
 
   config.vm.define "db2" do |server|
-    server.vm.network "private_network", ip: "10.0.1.3"
+    server.vm.network "private_network", ip: "192.168.33.11"
     config.vm.hostname = "db2"
-    config.vm.provision "shell", path: "install_mysql.sh"
+    config.vm.provision "shell", path: "install_mysql.sh", args: 2
   end
 
   config.vm.define "db12" do |server|
-    server.vm.network "private_network", ip: "10.0.1.4"
+    server.vm.network "private_network", ip: "192.168.33.12"
     config.vm.hostname = "db12"
     config.vm.provision "shell", path: "install_mariadb.sh"
   end

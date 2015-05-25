@@ -11,5 +11,21 @@ gpgcheck=1
 enabled=1
 EOF
 
+cat <<EOF > /etc/my.cnf.d/server.cnf
+[server]
+
+[mysqld]
+server_id=12
+
+[galera]
+
+[embedded]
+
+[mariadb]
+
+[mariadb-10.1]
+EOF
+
 yum -y erase mysql-community-common
 yum -y install MariaDB-devel MariaDB-client MariaDB-server
+service mysql start
